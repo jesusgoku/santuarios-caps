@@ -5,10 +5,23 @@ const typeDefs = gql`
 
   type Query {
     users: [User!]!
+    news: [News]
   }
 
   type User {
     name: String
+  }
+
+  type News {
+    id: ID
+    type: String
+    title: String
+    content: String
+    status: String
+    createdBy: String
+    updateBy: String
+    createdAt: DateTime
+    updatedAt: DateTime
   }
 `;
 
