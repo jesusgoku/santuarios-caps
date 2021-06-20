@@ -4,12 +4,7 @@ const typeDefs = gql`
   scalar DateTime
 
   type Query {
-    users: [User!]!
     news: [News]
-  }
-
-  type User {
-    name: String
   }
 
   type News {
