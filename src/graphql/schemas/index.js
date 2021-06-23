@@ -4,7 +4,18 @@ const typeDefs = gql`
   scalar DateTime
 
   type Query {
-    news: [News]
+    newsList(pagination: Pagination, order: [Order]): [News]
+    newsItem(id: ID!): News
+  }
+
+  input Pagination {
+    limit: Int
+    offset: Int
+  }
+
+  input Order {
+    field: String
+    direction: String
   }
 
   type News {

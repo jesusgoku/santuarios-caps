@@ -1,13 +1,12 @@
 import { GraphQLDateTime as DateTime } from 'graphql-iso-date';
 
-import News from '@app/models/News';
+import { newsList, newsItem } from './newsResolver';
 
 const resolvers = {
   DateTime,
   Query: {
-    async news() {
-      return News.findAll();
-    },
+    newsList,
+    newsItem,
   },
 };
 
