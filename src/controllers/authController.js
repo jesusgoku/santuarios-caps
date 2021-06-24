@@ -26,6 +26,10 @@ async function login(username, password) {
   };
 }
 
+function profile(username) {
+  return findOneByEmail(username);
+}
+
 function hash(algo, str) {
   return createHash(algo).update(str).digest('hex');
 }
@@ -37,9 +41,9 @@ function checkPassword(user, password) {
 }
 
 function generateToken(user) {
-  const { email: username } = user;
+  const { email: username, idRole } = user;
 
-  return signAsync({ username }, PRIVATE_KEY, {
+  return signAsync({ user: { username, idRole } }, PRIVATE_KEY, {
     algorithm: 'RS256',
     expiresIn: '2h',
   });
@@ -47,4 +51,5 @@ function generateToken(user) {
 
 export {
   login, //
+  profile,
 };

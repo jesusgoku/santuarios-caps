@@ -3,21 +3,25 @@ import {
   GraphQLDate as Date,
 } from 'graphql-iso-date';
 
-import { login } from './authResolver';
+import { requireAuth, requireRoles } from './highOrderResolver';
+import { login, profile } from './authResolver';
 import { newsList, newsItem } from './newsResolver';
 import { userList, userItem } from './userResolver';
+
+const requireAtLeastMonitorRole = requireRoles(['3', '4', '5']);
 
 const resolvers = {
   Date,
   DateTime,
   Query: {
     login,
+    profile: requireAuth(profile),
 
     newsList,
     newsItem,
 
-    userList,
-    userItem,
+    userList: requireAuth(requireAtLeastMonitorRole(userList)),
+    userItem: requireAuth(requireAtLeastMonitorRole(userList)),
   },
 };
 

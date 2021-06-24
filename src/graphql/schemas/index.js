@@ -6,6 +6,7 @@ const typeDefs = gql`
 
   type Query {
     login(username: String!, password: String!): Login
+    profile: User
 
     newsList(pagination: Pagination, order: [Order]): [News]
     newsItem(id: ID!): News
@@ -43,7 +44,7 @@ const typeDefs = gql`
 
   type User {
     id: ID
-    idRol: String
+    idRole: String
     username: String
     email: String
     name: String
