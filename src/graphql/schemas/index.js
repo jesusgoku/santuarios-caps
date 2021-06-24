@@ -5,6 +5,8 @@ const typeDefs = gql`
   scalar DateTime
 
   type Query {
+    login(username: String!, password: String!): Login
+
     newsList(pagination: Pagination, order: [Order]): [News]
     newsItem(id: ID!): News
 
@@ -20,6 +22,11 @@ const typeDefs = gql`
   input Order {
     field: String
     direction: String
+  }
+
+  type Login {
+    token: String
+    user: User
   }
 
   type News {

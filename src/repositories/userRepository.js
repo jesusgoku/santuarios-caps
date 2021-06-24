@@ -8,7 +8,12 @@ function findOneById(id) {
   return User.findOne({ where: { id } });
 }
 
+function findOneByEmail(email) {
+  return User.findOne({ where: { email } });
+}
+
 export {
   findAll, //
   findOneById,
+  findOneByEmail,
 };
