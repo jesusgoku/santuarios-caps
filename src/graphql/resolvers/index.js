@@ -14,7 +14,6 @@ const resolvers = {
   Date,
   DateTime,
   Query: {
-    login,
     profile: requireAuth(profile),
 
     newsList,
@@ -22,6 +21,9 @@ const resolvers = {
 
     userList: requireAuth(requireAtLeastMonitorRole(userList)),
     userItem: requireAuth(requireAtLeastMonitorRole(userList)),
+  },
+  Mutation: {
+    login,
   },
 };
 
