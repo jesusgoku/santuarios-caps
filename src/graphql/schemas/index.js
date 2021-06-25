@@ -68,6 +68,14 @@ const typeDefs = gql`
     infoStatus: Int
     createdAt: DateTime
     updatedAt: DateTime
+    role: Role
+  }
+
+  type Role {
+    id: ID
+    name: String
+    position: String
+    state: String
   }
 `;
 
