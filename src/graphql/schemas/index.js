@@ -18,6 +18,11 @@ const typeDefs = gql`
     login(username: String!, password: String!): Login
   }
 
+  enum OrderDirection {
+    ASC
+    DESC
+  }
+
   input Pagination {
     limit: Int
     offset: Int
@@ -25,7 +30,7 @@ const typeDefs = gql`
 
   input Order {
     field: String
-    direction: String
+    direction: OrderDirection
   }
 
   type Login {
