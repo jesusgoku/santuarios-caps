@@ -6,7 +6,13 @@ import {
 import { requireAuth, requireRoles } from './highOrderResolver';
 import { login, profile } from './authResolver';
 import { newsList, newsItem } from './newsResolver';
-import { userList, userItem } from './userResolver';
+import {
+  userList,
+  userItem,
+  emergency,
+  medicalRecord,
+  technicalRecord,
+} from './userResolver';
 import { role } from './roleResolver';
 
 // -- Custom HOR
@@ -29,6 +35,9 @@ const resolvers = {
   },
   User: {
     role,
+    emergency,
+    medicalRecord,
+    technicalRecord,
   },
 };
 

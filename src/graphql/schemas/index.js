@@ -69,6 +69,42 @@ const typeDefs = gql`
     createdAt: DateTime
     updatedAt: DateTime
     role: Role
+    emergency: UserEmergency
+    medicalRecord: UserMedicalRecord
+    technicalRecord: UserTechnicalRecord
+  }
+
+  type UserEmergency {
+    id: ID
+    userId: Int
+    contactPhone: String
+    contactName: String
+    contactRelationship: String
+    medicalSystem: String
+    medicalAgreement: String
+    medicalInsurance: String
+  }
+
+  type UserTechnicalRecord {
+    id: ID
+    userId: Int
+    training: String
+    trainingDescription: String
+    club: String
+  }
+
+  type UserMedicalRecord {
+    id: ID
+    userId: Int
+    bloodType: String
+    lesion: String
+    lesionDescription: String
+    trauma: String
+    traumaDescription: String
+    allergy: String
+    allergyDescription: String
+    anotherDisease: String
+    takeMedications: String
   }
 
   type Role {
