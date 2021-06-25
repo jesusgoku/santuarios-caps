@@ -42,9 +42,9 @@ function checkPassword(user, password) {
 }
 
 function generateToken(user) {
-  const { email: username, idRole } = user;
+  const { email: username, roleId } = user;
 
-  return signAsync({ user: { username, idRole } }, PRIVATE_KEY, {
+  return signAsync({ user: { username, roleId } }, PRIVATE_KEY, {
     algorithm: 'RS256',
     expiresIn: EXPIRES_IN,
   });

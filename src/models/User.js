@@ -10,7 +10,7 @@ User.init(
       type: DataTypes.BIGINT,
       primaryKey: true,
     },
-    idRole: {
+    roleId: {
       field: 'id_rol',
       type: DataTypes.BIGINT,
       allowNull: true,

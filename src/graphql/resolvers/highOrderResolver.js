@@ -25,8 +25,8 @@ function requireRoles(roles) {
     return (parent, args, context, info) => {
       if (
         !context.user ||
-        !context.user.idRole ||
-        !roles.includes(context.user.idRole)
+        !context.user.roleId ||
+        !roles.includes(context.user.roleId)
       )
         return;
 
