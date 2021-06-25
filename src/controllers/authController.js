@@ -3,12 +3,14 @@ import { sign } from 'jsonwebtoken';
 import { promisify } from 'util';
 
 import { findOneByEmail } from '@app/repositories/userRepository';
+import { hash } from '@app/helpers/crypto';
 
 const PRIVATE_KEY = Buffer.from(process.env.JWT_BASE64_PRIVATE_KEY, 'base64');
 const EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h';
 
 const signAsync = promisify(sign);
 
+// -- Public
 async function login(username, password) {
   const user = await findOneByEmail(username);
 
@@ -31,10 +33,7 @@ function profile(username) {
   return findOneByEmail(username);
 }
 
-function hash(algo, str) {
-  return createHash(algo).update(str).digest('hex');
-}
-
+// -- Private
 function checkPassword(user, password) {
   return (
     user.password === hash('sha512', `${hash('sha512', password)}${user.salt}`)
