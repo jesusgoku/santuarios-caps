@@ -5,6 +5,7 @@ import { promisify } from 'util';
 import { findOneByEmail } from '@app/repositories/userRepository';
 
 const PRIVATE_KEY = Buffer.from(process.env.JWT_BASE64_PRIVATE_KEY, 'base64');
+const EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h';
 
 const signAsync = promisify(sign);
 
@@ -45,7 +46,7 @@ function generateToken(user) {
 
   return signAsync({ user: { username, idRole } }, PRIVATE_KEY, {
     algorithm: 'RS256',
-    expiresIn: '2h',
+    expiresIn: EXPIRES_IN,
   });
 }
 
